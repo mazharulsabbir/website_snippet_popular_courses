@@ -2,7 +2,6 @@
 <odoo>
     <data>
         <!-- adding ratting star and enrolled member in base course card  -->
-
         <template id="website_course_card_inherit" inherit_id="website_slides.course_card">
             <xpath expr="//div[hasclass('card-footer')]" position="inside">
                 <ul class="list-group list-group-flush ">

@@ -18,7 +18,7 @@
         "views/assets.xml",
         "views/snippet.xml",
         "views/top_course_snippet_template.xml",
-        "views/course_card_inherit.xml",
+        "views/top_course_card_footer_template.xml",
     ],
     'demo': [],
     'installable': True,
