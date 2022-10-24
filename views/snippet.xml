@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="s_website_popular_course" name="Website Carousel Snippet">
+        <section class="s_website_popular_course_section p-0">
+            <div class="container text-center">
+                <h2>Website Popular Courses</h2>
+                <p>Data will be fetched after saving.</p>
+            </div>
+        </section>
+    </template>
+
+    <template id="snippets" inherit_id="website.snippets" name="course_attendees snippets">
+        <xpath expr="//div[@id='snippet_effect']/div[hasclass('o_panel_body')]" position="inside">
+            <t t-snippet="website_snippet_popular_courses.s_website_popular_course"  t-thumbnail="/website_snippet_popular_courses/static/description/icon.png"/>
+        </xpath>
+    </template>
+</odoo>

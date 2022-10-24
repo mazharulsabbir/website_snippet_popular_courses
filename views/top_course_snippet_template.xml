@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- dynamic snippet for top courses in home page -->
+    <template id="website_popular_course_snippet" name="Top Courses">
+        <section class="index_snippet">
+            <div class="snippet">
+                <div class="container">
+                    <div class="text-center mt-5">
+                        <h1>Top Courses</h1>
+                    </div>
+                    <div class="row mx-n2 mt8 d-flex flex-grow-1 align-items-stretch">
+                        <t t-foreach="data_list" t-as="channel">
+                            <div class="col-md-4 col-sm-6 px-2 mb-4 col-xs-12 d-flex flex-grow-1">
+                                <a t-attf-href="/slides/#{slug(channel)}" t-title="channel.name">
+                                    <div class="card w-100 hover_effect bg-white custom-card">
+                                        <div class="card-img-top"
+                                             t-attf-style="padding-top: 50%; background-image: url('/web/image/slide.channel/{{channel.id}}/image_1920'); background-size: cover; background-position:center"/>
+                                        <div class="card-body">
+                                            <h5 class="card-title h5 mb-2 o_wslides_desc_truncate_2" t-esc="channel.name"/>
+                                            <div t-if="channel.tag_ids" class="mt-2 pt-1 o_wslides_desc_truncate_2">
+                                                <t t-foreach="channel.tag_ids[:3]" t-as="tag">
+                                                    <a t-attf-class="badge o_wslides_channel_tag #{'o_tag_color_'+str(tag.color)}" t-esc="tag.name"/>
+                                                </t>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer bg-white text-600 px-3">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <small t-if="channel.total_time" class="font-weight-bold" t-esc="channel.total_time"
+                                                       t-options="{'widget': 'duration', 'unit': 'hour', 'round': 'minute'}"/>
+                                                <div class="d-flex flex-grow-1 justify-content-end">
+                                                    <t t-if="channel.is_member and channel.completed">
+                                                        <span class="badge badge-pill badge-success pull-right py-1 px-2">
+                                                            <i class="fa fa-check"/>
+                                                            Completed
+                                                        </span>
+                                                    </t>
+                                                    <div t-elif="channel.is_member and channel.channel_type != 'documentation'" class="progress w-50" style="height: 6px">
+                                                        <div class="progress-bar" role="progressbar" t-att-aria-valuenow="channel.completion" aria-valuemin="0" aria-valuemax="100"
+                                                             t-attf-style="width:#{channel.completion}%;"/>
+                                                    </div>
+                                                    <small t-else="">
+                                                        <b t-esc="channel.total_slides"/>
+                                                        steps
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- adding course ratting star and enrolled member in course card in home section -->
+                                        <ul class="list-group list-group-flush mb-2">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="px-3">
+                                                    <i class="fa fa-users fa-lg" style="color:green"/>
+                                                    <small t-if="channel.members_count" class="font-weight-bold" t-esc="channel.members_count"/>
+                                                </div>
+                                                <div class="px-3">
+                                                    <t t-set="rating_avg" t-value="channel.rating_avg_stars"/>
+                                                    <t t-set="rating_avg" t-value="round(rating_avg * 100) / 100"/>
+                                                    <t t-set="val_decimal" t-value="round(rating_avg % 1, 1)"/>
+                                                    <t t-set="val_integer" t-value="int(rating_avg)"/>
+                                                    <t t-set="empty_star" t-value="5 - (val_integer+1) if val_decimal else 5 - val_integer"/>
+                                                    <div class="o_website_rating_static" t-att-style="inline_mode and 'display:inline'" t-att-title="rating_avg">
+                                                        <t t-foreach="range(0, val_integer)" t-as="num">
+                                                            <i class="fa fa-star" role="img"/>
+                                                        </t>
+                                                        <t t-if="val_decimal">
+                                                            <i class="fa fa-star-half-o" role="img"/>
+                                                        </t>
+                                                        <t t-foreach="range(0, empty_star)" t-as="num">
+                                                            <i class="fa fa-star text-black-25" role="img"/>
+                                                        </t>
+                                                        <t t-esc="rating_count"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ul>
+                                    </div>
+                                </a>
+                            </div>
+                        </t>
+                    </div>
+                    <p style="text-align: center;">
+                        <b>
+                            <a href="/slides" class="mb-2 mt-4 btn btn-outline-primary rounded-circle btn-lg" data-original-title="" title="" aria-describedby="tooltip403912">FIND
+                                COURSE
+                            </a>
+                        </b>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </template>
+
+</odoo>

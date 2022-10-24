@@ -1,0 +1,84 @@
+#event{
+    .text_format{
+        font-size:48px;
+    }
+    .border-left{
+       border-left: 2px solid theme-color('primary') !important;
+    }
+    .event-content a{
+        text-decoration:none;
+        color:theme-color('secondary');
+    }
+    .event-img {
+    overflow:hidden;
+    position:relative;
+    cursor:default;
+    }
+    .event-img img {
+    //display:block;
+    position:relative;
+    -webkit-transition:all .4s linear;
+    transition:all .4s linear;
+    }
+    .event-img:hover img {
+    -ms-transform:scale(1.2);
+    -webkit-transform:scale(1.2);
+    transform:scale(1.2);
+    }
+    .single-event .event-img .event-date-wrap {
+        position: absolute;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        left: 0;
+        background-color: theme-color('primary');
+        padding: 12px 20px 12px;
+    }
+    .single-event .event-content {
+        padding: 24px 30px 30px;
+    }
+    .single-event .event-img .event-date-wrap span {
+        color: #fff;
+        font-size: 18px;
+        font-weight: bold;
+        display: block;
+        line-height: 1;
+    }
+    .single-event .event-content .event-meta-wrap .event-meta i {
+        width: 25px;
+        height: 25px;
+        border-radius: 100%;
+        color: #fff;
+        background-color: theme-color('secondary');
+        font-size: 12px;
+        text-align: center;
+        line-height: 25px;
+        margin: 0 8px 0 0;
+    }
+    .single-event .event-content .event-meta-wrap .event-meta span {
+        color: theme-color('primary');
+        font-size: 0.875rem;
+    }
+    .single-event .event-content .event-meta-wrap {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+    }
+    @media only screen and (max-width: 768px){
+    .single-event .event-content .event-meta-wrap {
+        display: block;
+        }
+    }
+    @media only screen
+    and (min-device-width: 1024px)
+    and (max-device-width: 1366px)
+    and (-webkit-min-device-pixel-ratio: 2){
+    .single-event .event-content .event-meta-wrap {
+        display: block;
+        }
+    }
+    }
